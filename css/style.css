@@ -1,0 +1,1170 @@
+
+/* =================================
+   TO YOU - LOVE WEBSITE
+   File: css/style.css
+================================= */
+
+/* 1. GLOBAL SETTINGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #080817;
+    --pink: #ff4fa3;
+    --purple: #a855f7;
+    --blue: #6c8cff;
+    --white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--bg-color);
+    color: var(--white);
+    font-family: 'Kanit', sans-serif;
+}
+
+/* 2. UNIVERSE BACKGROUND */
+
+#universe {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 3. MAIN CONTAINER */
+
+.container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* 4. HEADER */
+
+.header {
+    margin-bottom: 25px;
+    animation: fadeDown 1.2s ease both;
+}
+
+.sub-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--purple);
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: clamp(30px, 7vw, 48px);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.header h1 span {
+    color: var(--pink);
+    text-shadow: 0 0 15px var(--pink);
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #aaaac5;
+    font-weight: 300;
+}
+
+/* 5. HEART SECTION */
+
+.heart-section {
+    position: relative;
+
+    width: 100%;
+    max-width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 15px 0;
+}
+
+.heart-wrapper {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-glow {
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    background: var(--pink);
+    border-radius: 50%;
+
+    filter: blur(85px);
+    opacity: 0.55;
+
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.heart {
+    position: relative;
+    z-index: 1;
+
+    color: var(--pink);
+    font-size: 125px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff4fa3,
+        0 0 50px #ff1688,
+        0 0 90px #a855f7;
+
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart-caption {
+    margin-top: 10px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    color: #aaaac5;
+}
+
+/* 6. MESSAGE SECTION */
+
+.message-section {
+    margin-top: 20px;
+    animation: fadeUp 1.5s ease both;
+}
+
+.message {
+    font-size: clamp(17px, 4vw, 21px);
+    font-weight: 400;
+
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 79, 163, 0.4);
+}
+
+.message-sub {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #a5a5bd;
+    font-weight: 300;
+}
+
+/* 7. BUTTON */
+
+.action-section {
+    margin-top: 30px;
+}
+
+.love-button {
+    position: relative;
+
+    padding: 14px 32px;
+
+    border: 1px solid rgba(255, 79, 163, 0.6);
+    border-radius: 50px;
+
+    background: rgba(255, 79, 163, 0.08);
+
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255, 79, 163, 0.15),
+        inset 0 0 15px rgba(255, 79, 163, 0.05);
+
+    transition: all 0.3s ease;
+}
+
+.love-button:hover {
+    background: rgba(255, 79, 163, 0.2);
+
+    box-shadow:
+        0 0 20px rgba(255, 79, 163, 0.5),
+        0 0 40px rgba(168, 85, 247, 0.2);
+
+    transform: translateY(-3px);
+}
+
+.love-button:active {
+    transform: scale(0.96);
+}
+
+/* 8. LETTER MODAL */
+
+.letter-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(3, 3, 15, 0.85);
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.4s ease;
+}
+
+.letter-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+    max-height: 85vh;
+    overflow-y: auto;
+
+    padding: 35px 25px;
+
+    border: 1px solid rgba(255, 79, 163, 0.35);
+    border-radius: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #17152c,
+        #0d0b1d
+    );
+
+    box-shadow:
+        0 0 30px rgba(255, 79, 163, 0.15),
+        0 0 80px rgba(168, 85, 247, 0.1);
+
+    transform: translateY(30px) scale(0.95);
+
+    transition: transform 0.4s ease;
+}
+
+.letter-modal.active .letter-card {
+    transform: translateY(0) scale(1);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+.letter-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.letter-card h2 {
+    color: var(--pink);
+    font-size: 25px;
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+.letter-content {
+    text-align: center;
+    line-height: 2;
+
+    font-size: 15px;
+    font-weight: 300;
+
+    color: #e3ddeb;
+}
+
+.letter-content p {
+    margin-bottom: 18px;
+}
+
+.letter-content .final-message {
+    color: var(--pink);
+    font-size: 20px;
+    font-weight: 500;
+
+    text-shadow: 0 0 15px rgba(255, 79, 163, 0.6);
+}
+
+.signature {
+    margin-top: 25px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+
+    color: var(--purple);
+    letter-spacing: 1px;
+}
+
+/* 9. FOOTER */
+
+.footer {
+    margin-top: 45px;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+
+    color: #77778f;
+    letter-spacing: 1px;
+}
+
+.footer-code {
+    margin-top: 7px;
+    opacity: 0.6;
+}
+
+/* 10. ANIMATIONS */
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.12);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.08);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 11. MOBILE RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 35px 18px;
+    }
+
+    .header {
+        margin-bottom: 15px;
+    }
+
+    .sub-title {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .heart-wrapper {
+        width: 190px;
+        height: 190px;
+    }
+
+    .heart {
+        font-size: 105px;
+    }
+
+    .heart-glow {
+        width: 120px;
+        height: 120px;
+    }
+
+    .message-section {
+        margin-top: 15px;
+    }
+
+    .action-section {
+        margin-top: 25px;
+    }
+
+    .letter-card {
+        padding: 35px 20px;
+    }
+
+    .footer {
+        margin-top: 35px;
+    }
+}
+
+/* 12. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+/* SECOND MESSAGE PAGE */
+
+.second-page {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(8, 8, 23, 0.96);
+    backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.second-page.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.second-page-content {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+
+    animation: fadeUp 1s ease;
+}
+
+.second-page-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+
+    filter: drop-shadow(0 0 15px #ff4fa3);
+
+    animation: glowPulse 2s infinite;
+}
+
+.second-page-subtitle {
+    color: #ff9bd0;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+}
+
+.second-page h2 {
+    color: #fff;
+    font-size: clamp(28px, 6vw, 40px);
+    margin-bottom: 30px;
+
+    text-shadow: 0 0 20px #ff4fa3;
+}
+
+.second-message {
+    color: #eee;
+    font-size: 16px;
+    line-height: 2;
+
+    padding: 24px;
+
+    border: 1px solid rgba(255, 155, 208, 0.25);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.second-message p {
+    margin-bottom: 18px;
+}
+
+.second-message p:last-child {
+    margin-bottom: 0;
+}
+
+.second-page-signature {
+    margin-top: 30px;
+}
+
+.second-page-signature span {
+    display: block;
+    color: #ff9bd0;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+}
+
+.second-page-signature h3 {
+    color: white;
+    font-size: 19px;
+    margin-top: 10px;
+
+    text-shadow: 0 0 15px #ff4fa3;
+}
+
+@media (max-width: 480px) {
+    .second-page {
+        padding: 18px;
+        overflow-y: auto;
+    }
+
+    .second-message {
+        padding: 18px;
+        font-size: 14px;
+    }
+
+    .second-page h2 {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* =========================================
+   TO YOU - FINAL CSS FIX
+   Compatible with latest index.html/main.js
+========================================= */
+
+/* 1. HEART VISIBILITY */
+
+.heart-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.heart {
+    position: relative;
+    z-index: 2;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Canvas stays behind the content */
+#universe {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. LETTER MODAL INTERACTION */
+
+.letter-modal {
+    z-index: 50;
+    pointer-events: none;
+    overflow-y: auto;
+}
+
+.letter-modal.active {
+    pointer-events: auto;
+}
+
+.letter-card {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Next page button */
+#nextPage {
+    margin-top: 25px;
+}
+
+/* 3. SECOND MESSAGE PAGE */
+
+.second-page {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+
+    overflow-y: auto;
+
+    background: rgba(8, 8, 23, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.second-page.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Second page card */
+
+.second-page-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 155, 208, 0.25);
+    border-radius: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #17152c,
+        #0d0b1d
+    );
+
+    box-shadow:
+        0 0 30px rgba(255, 79, 163, 0.15),
+        0 0 80px rgba(168, 85, 247, 0.1);
+
+    transform: translateY(25px) scale(0.97);
+
+    transition: transform 0.4s ease;
+}
+
+.second-page.active .second-page-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Close button on second page */
+
+.second-page-content .close-button {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+
+    z-index: 2;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.second-page-content .close-button:hover {
+    background: rgba(255, 79, 163, 0.25);
+    transform: rotate(90deg);
+}
+
+/* 4. SECOND PAGE CONTENT */
+
+.second-page-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+
+    filter: drop-shadow(0 0 15px #ff4fa3);
+
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.second-page-subtitle {
+    color: #ff9bd0;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+.second-page h2 {
+    color: #fff;
+    font-size: clamp(26px, 6vw, 40px);
+    font-weight: 500;
+
+    margin-bottom: 25px;
+
+    text-shadow: 0 0 20px #ff4fa3;
+}
+
+.second-message {
+    color: #eee;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 2;
+
+    padding: 24px;
+
+    border: 1px solid rgba(255, 155, 208, 0.25);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    text-align: left;
+}
+
+.second-message p {
+    margin-bottom: 18px;
+}
+
+.second-message p:last-child {
+    margin-bottom: 0;
+}
+
+.second-page-signature {
+    margin-top: 30px;
+}
+
+.second-page-signature span {
+    display: block;
+
+    color: #ff9bd0;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+}
+
+.second-page-signature h3 {
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 19px;
+
+    margin-top: 10px;
+
+    text-shadow: 0 0 15px #ff4fa3;
+}
+
+/* 5. SCROLLBAR */
+
+.letter-card::-webkit-scrollbar,
+.second-page-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.letter-card::-webkit-scrollbar-thumb,
+.second-page-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 79, 163, 0.4);
+    border-radius: 10px;
+}
+
+/* 6. MOBILE RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    .letter-modal {
+        padding: 12px;
+    }
+
+    .letter-card {
+        max-height: 90vh;
+        padding: 35px 20px;
+    }
+
+    .second-page {
+        padding: 14px;
+        align-items: center;
+    }
+
+    .second-page-content {
+        max-height: 92vh;
+        padding: 48px 20px 28px;
+    }
+
+    .second-page h2 {
+        font-size: 27px;
+        margin-bottom: 20px;
+    }
+
+    .second-message {
+        padding: 18px;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .second-page-signature h3 {
+        font-size: 16px;
+    }
+}
+/* =========================================
+   HIDDEN MESSAGES
+========================================= */
+
+.hidden-message {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(8, 8, 23, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+}
+
+.hidden-message.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.hidden-message-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 360px;
+
+    padding: 45px 25px 35px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 155, 208, 0.35);
+    border-radius: 25px;
+
+    background: linear-gradient(
+        145deg,
+        #21152f,
+        #0d0b1d
+    );
+
+    box-shadow:
+        0 0 30px rgba(255, 79, 163, 0.25),
+        0 0 70px rgba(168, 85, 247, 0.15);
+
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.35s ease;
+}
+
+.hidden-message.active .hidden-message-card {
+    transform: translateY(0) scale(1);
+}
+
+.hidden-message-icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+
+    filter: drop-shadow(0 0 15px #ff4fa3);
+}
+
+.hidden-message-label {
+    margin-bottom: 18px;
+
+    color: #ff9bd0;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+#hiddenMessageText {
+    color: #ffffff;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FINAL SURPRISE
+========================================= */
+
+.final-surprise {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    /* โปร่งใสเพื่อให้เห็นดาวที่กำลังเคลื่อนตัว */
+    background: rgba(8, 8, 23, 0.48);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+.final-surprise.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.final-surprise-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 470px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 55px 30px 40px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 155, 208, 0.35);
+    border-radius: 28px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(35, 20, 48, 0.94),
+        rgba(13, 11, 29, 0.94)
+    );
+
+    box-shadow:
+        0 0 35px rgba(255, 79, 163, 0.25),
+        0 0 90px rgba(168, 85, 247, 0.2);
+
+    transform: translateY(25px) scale(0.95);
+    transition: transform 0.6s ease;
+}
+
+.final-surprise.active .final-surprise-content {
+    transform: translateY(0) scale(1);
+}
+
+.final-heart {
+    color: #ff4fa3;
+    font-size: 75px;
+    line-height: 1;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 15px #ff4fa3,
+        0 0 35px #ff4fa3,
+        0 0 65px #a855f7;
+
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.final-surprise-label {
+    color: #ff9bd0;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.final-surprise-content h2 {
+    color: #ffffff;
+
+    font-size: clamp(23px, 5vw, 32px);
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+
+    text-shadow: 0 0 20px rgba(255, 79, 163, 0.7);
+}
+
+.final-surprise-message {
+    color: #eee;
+
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 2;
+
+    margin-bottom: 25px;
+}
+
+.final-surprise-signature {
+    color: #ff9bd0;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   BUTTON & MODAL FIXES
+========================================= */
+
+#finalSurpriseButton {
+    margin-top: 25px;
+}
+
+.hidden-message-card .close-button,
+.final-surprise-content .close-button {
+    z-index: 5;
+}
+
+.hidden-message-card .close-button:hover,
+.final-surprise-content .close-button:hover {
+    background: rgba(255, 79, 163, 0.25);
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .hidden-message-card {
+        padding: 45px 22px 30px;
+    }
+
+    #hiddenMessageText {
+        font-size: 15px;
+    }
+
+    .final-surprise-content {
+        padding: 50px 22px 30px;
+    }
+
+    .final-heart {
+        font-size: 65px;
+    }
+
+    .final-surprise-message {
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    #finalSurpriseButton {
+        width: 100%;
+        padding: 13px 15px;
+    }
+}

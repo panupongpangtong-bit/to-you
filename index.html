@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080817">
+    <meta name="description" content="A little universe made just for you.">
+    <link rel="stylesheet" href="./css/home.css">
+    <title>To You ❤️</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+<!-- HOME INTRO -->
+<section id="home">
+
+    <div class="home-content">
+
+        <h1 class="home-title">
+            Draw Your Heart ❤️
+        </h1>
+
+        <p class="home-description">
+            วาดหัวใจของเราไว้ตรงนี้นะตัวเล็ก
+            <br>
+            แล้วเราจะไปต่อด้วยกัน
+        </p>
+
+        <div class="home-draw-area">
+            <canvas id="drawCanvas"></canvas>
+        </div>
+
+        <p class="home-hint">
+            ใช้นิ้วหรือเมาส์วาดหัวใจบนพื้นที่ด้านบน
+        </p>
+
+<div class="home-buttons">
+
+    <button
+        type="button"
+        id="clearDrawing"
+        class="home-button"
+    >
+        วาดหัวใจอีกครั้ง
+    </button>
+
+    <button
+        type="button"
+        id="enterWebsite"
+        class="home-button"
+        disabled
+    >
+        เข้าสู่จักรวาลของเรา ❤️
+    </button>
+
+</div>
+
+
+    </div>
+
+</section>
+
+
+    <!-- Background Universe -->
+    <canvas id="universe"></canvas>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <p class="sub-title">A LITTLE UNIVERSE FOR YOU</p>
+
+            <h1>
+                Hello, <span>ตัวเล็ก</span> ❤️
+            </h1>
+
+            <p class="description">
+                มีบางอย่างอยากบอก...
+            </p>
+        </header>
+
+        <!-- Heart Section -->
+        <section class="heart-section">
+
+            <div class="heart-glow"></div>
+
+            <div class="heart-wrapper">
+                <div class="heart" id="heart">❤</div>
+            </div>
+
+            <p class="heart-caption">
+                Made with a little bit of code
+                and a whole lot of love.
+            </p>
+
+        </section>
+
+        <!-- Message Section -->
+        <section class="message-section">
+
+            <p class="message" id="mainMessage">
+                ตัวเล็กกำลังอ่านข้อความนี้อยู่ใช่ไหม?
+            </p>
+
+            <p class="message-sub">
+                นักพัฒนาคนนี้มีเรื่องจะสารภาพนิดหน่อย...
+            </p>
+
+        </section>
+
+        <!-- Letter Button -->
+        <section class="action-section">
+
+            <button
+                id="openLetter"
+                class="love-button"
+                type="button"
+            >
+                <span>เปิดข้อความลับ 💌</span>
+            </button>
+
+        </section>
+
+        <!-- Letter Modal -->
+        <section
+            class="letter-modal"
+            id="letterModal"
+            aria-hidden="true"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="letterTitle"
+        >
+
+            <div class="letter-card">
+
+                <button
+                    class="close-button"
+                    id="closeLetter"
+                    type="button"
+                    aria-label="ปิดจดหมาย"
+                >
+                    ✕
+                </button>
+
+                <div class="letter-icon">💌</div>
+
+                <h2 id="letterTitle">ถึงตัวเล็ก</h2>
+
+                <div class="letter-content">
+
+                    <p>
+                        เราอาจจะไม่ได้เก่งเรื่องความรัก
+                        เหมือนที่เราเก่งเรื่องเขียนโค้ด
+                    </p>
+
+                    <p>
+                        บางครั้งก็มี Error บ้าง
+                        บางครั้งก็ Debug ไม่เจอ
+                        แต่เราอยากแก้ไขมันนะ
+                    </p>
+
+                    <p>
+                        ไม่ได้อยากลบทุกอย่างแล้วเริ่มใหม่
+                        แต่อยากค่อย ๆ ปรับปรุง
+                        ให้มันดีขึ้นไปด้วยกัน
+                    </p>
+
+                    <p>
+                        บางครั้งเหมือนไม่ใส่ใจ
+                        แต่ก็ยังแอบมองอยู่ห่าง ๆ ข้างหลังเสมอ
+                        แต่...กำลังพยายามเพื่อสิ่งที่ดีกว่า
+                        เพื่อวันข้างหน้าเราจะได้มีอนาคตที่ดีกว่าตอนนี้
+                    </p>
+
+                    <p class="final-message">
+                        ขอโทษนะตัวเล็ก ❤️
+                    </p>
+
+                </div>
+
+                <p class="signature">
+                    From your favorite developer.
+                </p>
+
+                <button
+                    id="nextPage"
+                    class="love-button"
+                    type="button"
+                >
+                    อ่านข้อความต่อไป ✨
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Second Message Page -->
+        <section
+            class="second-page"
+            id="secondPage"
+            aria-hidden="true"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="secondPageTitle"
+        >
+
+            <div class="second-page-content">
+
+                <button
+                    class="close-button"
+                    id="closeSecondPage"
+                    type="button"
+                    aria-label="ปิดข้อความ"
+                >
+                    ✕
+                </button>
+
+                <div class="second-page-icon">
+                    ✨
+                </div>
+
+                <p class="second-page-subtitle">
+                    A MESSAGE FOR YOUR FUTURE
+                </p>
+
+                <h2 id="secondPageTitle">
+                    ขอให้เธอสู้ ๆ นะ ❤️
+                </h2>
+
+                <div class="second-message">
+
+                    <p>
+                        อยากให้เธอพยายามพัฒนาตัวเองไปเรื่อย ๆ
+                        ค่อย ๆ เติบโตในแบบที่เธออยากเป็น
+                    </p>
+
+                    <p>
+                        อย่าลืมเทคแคร์ตัวเองให้มากขึ้นด้วยนะ
+                        ทั้งสุขภาพกายและสุขภาพใจ
+                    </p>
+
+                    <p>
+                        วางแผนชีวิตของตัวเองให้ดี
+                        ค่อย ๆ ทำตามเป้าหมายทีละก้าว
+                        ไม่จำเป็นต้องรีบเก่งหรือสำเร็จในวันนี้ก็ได้
+                    </p>
+
+                    <p>
+                        และถ้าวันไหนเหนื่อยหรือไม่รู้จะปรึกษาใคร
+                        อย่าลืมว่ายังมีที่ปรึกษาคนนี้อยู่ตรงนี้เสมอนะ
+                    </p>
+
+                </div>
+
+                <div class="second-page-signature">
+                    <span>Take care of yourself.</span>
+                    <h3>I'm always here for you. ❤️</h3>
+                </div>
+
+                <!-- Final Surprise Button -->
+                <button
+                    id="finalSurpriseButton"
+                    class="love-button"
+                    type="button"
+                >
+                    มีอะไรอยากให้ดูอีกนิด ❤️
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Hidden Message Popup -->
+        <div
+            class="hidden-message"
+            id="hiddenMessage"
+            aria-hidden="true"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="hiddenMessageLabel"
+        >
+
+            <div class="hidden-message-card">
+
+                <button
+                    class="close-button"
+                    id="closeHiddenMessage"
+                    type="button"
+                    aria-label="ปิดข้อความ"
+                >
+                    ✕
+                </button>
+
+                <div class="hidden-message-icon">⭐</div>
+
+                <p
+                    class="hidden-message-label"
+                    id="hiddenMessageLabel"
+                >
+                    A LITTLE SECRET
+                </p>
+
+                <p id="hiddenMessageText">
+                    มีข้อความเล็ก ๆ ซ่อนอยู่ตรงนี้ ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Final Surprise -->
+        <section
+            class="final-surprise"
+            id="finalSurprise"
+            aria-hidden="true"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="finalSurpriseTitle"
+        >
+
+            <div class="final-surprise-content">
+
+                <button
+                    class="close-button"
+                    id="closeFinalSurprise"
+                    type="button"
+                    aria-label="ปิดเซอร์ไพรส์"
+                >
+                    ✕
+                </button>
+
+                <div class="final-heart">❤</div>
+
+                <p class="final-surprise-label">
+                    ONE MORE THING
+                </p>
+
+                <h2 id="finalSurpriseTitle">
+                    เธอคือความพิเศษ
+                </h2>
+
+                <p class="final-surprise-message">
+                    ไม่รู้ว่าอนาคตจะเป็นอย่างไร
+                    แต่เราอยากให้เธอมีความสุข
+                    ได้เติบโตในแบบที่ตัวเองต้องการ
+                    และอย่าลืมว่าตัวเองมีคุณค่ามากแค่ไหนนะ
+                </p>
+
+                <p class="final-surprise-signature">
+                    With all my heart. ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <p>
+                Designed &amp; Developed with ❤️
+            </p>
+
+            <p class="footer-code">
+                © 2026 — To You Project
+            </p>
+
+        </footer>
+
+    </main>
+    
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+<script src="./js/home.js"></script>
+</body>
+</html>
